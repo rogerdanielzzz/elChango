@@ -1,4 +1,4 @@
-# NirvanArt
+# El Chango
 <h1 align="center">Hi 👋, I'm Roger Pérez</h1>
 <h3 align="center">A passionate web developer from Argentina</h3>
 
