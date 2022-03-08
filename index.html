@@ -120,7 +120,7 @@
     <section class="listaSeccion" id="Lista">
         <div class="container">
             <div class="row">
-                <div class="col-12 d-flex aling-items-center">
+                <div class="col-12 justify-content-center">
                     <div>
                         <h2 class="display-4  text-center font-italic p-3">Agrega Tus Productos a la Lista</h2>
                         <!--Un formulario con diferentes tipos de input-->
@@ -159,11 +159,13 @@
                             </div>
                            
                            <!--Boton que controlara el evento-->
-                            <button type="submit" class="btn btn-warning">Agregar Producto</button>
+                           <div class="mx-auto text-center">
+                           <button type="submit" class=" btn btn-warning">Agregar Producto</button>
+                           <button id="botonProductos" class="ml-3 btn btn-dark">Actualizar Lista</button>
+                        </div>
                         </form>
-                        <br><br>
 
-                        <button id="botonProductos" class="btn btn-dark">Actualizar Lista</button><br><br>
+                        
                     </div>
                 </div>
             </div>
@@ -177,14 +179,15 @@
         <div class="container">
             <div class="row">
                 <h1 class="principal-title display-4  col-12 text-center mt-5 pb-4">Compara tus 2 listas</h1>
-                <div class="col-lg-6 col-12  ">
+                <div class="col-lg-6 col-12 ">
                     <div class=" mb-5 ">
                         <h2 class="display-4 text-center p-4">Lista Coto</h2>
                         <!--Div vacio para los objetos del array-->
-                        <div id="divListaCoto"></div>
+                        <div id="divListaCoto" class="ml-auto"></div>
                         <!--P que mostrara el precio total de la lista-->
-                        <p id="totalCoto" class="justify-text-center p-2">
-                        </p>
+                        <div id="totalCoto" class="justify-text-center p-2"></div>
+                        <div id="botonEliminarCoto" class="botonEliminar col-md-12 text-center"></div>
+                       
                     </div>
                 </div>
                 <div class="col-lg-6 col-12 margen ">
@@ -193,8 +196,8 @@
                         <!--Div vacio para los objetos del array-->
                         <div id="divListaCarrefour"></div>
                         <!--P que mostrara el precio total de la lista-->
-                        <p id="totalCarrefour" class="justify-text-center p-2">
-                        </p>
+                        <div id="totalCarrefour" class="justify-text-center p-2"></div>
+                        <div id="botonEliminarCarrefour" class="col-md-12 text-center"></div>
                     </div>
                 </div>
             </div>
