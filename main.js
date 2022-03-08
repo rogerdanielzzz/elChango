@@ -23,12 +23,12 @@ class Productos {
 let datosCoto = JSON.parse(localStorage.getItem('productosCoto'))
 let datosCarrefour = JSON.parse(localStorage.getItem('productosCarrefour'))
 let listaCoto = [];
-if (datosCoto){
-    listaCoto =[...datosCoto]     
+if (datosCoto) {
+    listaCoto = [...datosCoto]
 }
-let listaCarrefour= []
-if (datosCarrefour){
-    listaCarrefour = [...datosCarrefour]  
+let listaCarrefour = []
+if (datosCarrefour) {
+    listaCarrefour = [...datosCarrefour]
 }
 
 
@@ -85,7 +85,7 @@ formProducto.addEventListener('submit', (e) => {
 
 // Siguiente evento de click al boton de actualizar lista el cual agrega codigo html  y crea cards de bt para cada objeto creado
 botonProductos.addEventListener('click', () => {
-   
+
     // Se crea condiciones de que si el array no tiene una cantidad leght 0 se procede a crear el codigo html de las cards
     if (listaCoto.length !== 0) {
         listaCoto.forEach((productos, index) => {
@@ -134,10 +134,10 @@ botonProductos.addEventListener('click', () => {
 
         totalCarrefour.innerHTML += `
         <p class="text-md-center fw-bold" > El total de tu lista Carrefour es $ ${SUMACARREFOUR}</p>`
-       
+
         botonEliminarCarrefour.innerHTML += `
         <button id="botonProductos" class="btn btn-danger text-center">Eliminar Lista</button>`
-       
+
 
 
     } else {
@@ -148,7 +148,7 @@ botonProductos.addEventListener('click', () => {
 
 
 botonEliminarCoto.addEventListener('click', () => {
- 
+
     listaCoto.splice(0, listaCoto.length)
     localStorage.removeItem('productosCoto')
 
