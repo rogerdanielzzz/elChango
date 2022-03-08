@@ -88,6 +88,11 @@ botonProductos.addEventListener('click', () => {
 
     // Se crea condiciones de que si el array no tiene una cantidad leght 0 se procede a crear el codigo html de las cards
     if (listaCoto.length !== 0) {
+        divListaCoto.innerHTML = ""
+        totalCoto.innerHTML = ``
+        botonEliminarCoto.innerHTML = ``
+       
+       
         listaCoto.forEach((productos, index) => {
             divListaCoto.innerHTML += `
                 <div class="card mx-auto my-5 text-dark bg-warning" id="producto${index}" style="width: 18rem;"> 
@@ -118,6 +123,11 @@ botonProductos.addEventListener('click', () => {
 // Se procede a las mismos eventos y funciones del array de coto
 botonProductos.addEventListener('click', () => {
     if (listaCarrefour.length !== 0) {
+        divListaCarrefour.innerHTML = ""
+        totalCarrefour.innerHTML = ``
+        botonEliminarCarrefour.innerHTML = ``
+      
+      
         listaCarrefour.forEach((productos, index) => {
             divListaCarrefour.innerHTML += `
                 <div class="card mx-auto my-5 text-dark bg-warning" id="producto${index}" style="width: 18rem;"> 
@@ -149,11 +159,22 @@ botonProductos.addEventListener('click', () => {
 
 botonEliminarCoto.addEventListener('click', () => {
 
+    divListaCoto.innerHTML = "No se agrego ningun producto de Coto"
+    totalCoto.innerHTML = ``
+    botonEliminarCoto.innerHTML = ``
+
     listaCoto.splice(0, listaCoto.length)
     localStorage.removeItem('productosCoto')
 
 })
+
+
 botonEliminarCarrefour.addEventListener('click', () => {
+
+    divListaCarrefour.innerHTML = "No se agrego ningun producto de Coto"
+    totalCarrefour.innerHTML = ``
+    botonEliminarCarrefour.innerHTML = ``
+
     listaCarrefour.splice(0, listaCarrefour.length)
     localStorage.removeItem('productosCarrefour')
 })
