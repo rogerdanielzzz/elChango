@@ -1,16 +1,20 @@
-footer, header nav {
-  background: linear-gradient(-45deg, #32cd32,#32cd32, #32cd32, orange);
+footer,
+header nav {
+  background: linear-gradient(-45deg, #32cd32, #32cd32, #32cd32, #ffa500);
   background-size: 400% 400%;
   animation: gradient 8s ease infinite;
   box-shadow: 4px 0px 14px black;
 }
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -25,6 +29,7 @@ footer, header nav {
 header nav ul li a {
   transition: all 0.25s;
 }
+
 header nav ul li a:hover {
   transform: scale(1.1);
 }
@@ -38,30 +43,34 @@ header nav ul li a:hover {
   background: url(../imagen/bgSuperMarket.jpg);
   background-size: cover;
 }
+
 .welcome div div Div a {
   width: 15vh;
   height: 7vh;
 }
+
 .welcome div div Div a button {
-  border-color: orange;
+  border-color: #ffc107;
   border-width: 2px;
   border-style: solid;
   border-radius: 5%;
-  padding: 2%,5%;
+  padding: 2%, 5%;
   margin: 2vh;
-  background-color: orange;
-  color: black;
+  background-color: #ffc107;
+  color: #000000;
   width: 15vh;
   height: 7vh;
 }
+
 .welcome div div Div a button:hover {
   background-color: #32cd32;
   color: black;
   border-color: black;
 }
+
 #textoBienvenida {
   color: black;
-  
+
 }
 
 section div h1 {
@@ -70,9 +79,10 @@ section div h1 {
 
 .listaSeccion {
   padding: 60px 0px 60px 0px;
-  background-color:  #32cd32;
+  background-color: #32cd32;
   box-shadow: 0px 4px 14px black;
 }
+
 .listaSeccion p {
   font-size: 2.7vh;
 }
@@ -91,9 +101,11 @@ section div h1 {
 .comparaSeccion {
   padding: 60px 0px 60px 0px;
 }
+
 .comparaSeccion .mandala-terapia {
   transition: all 0.7s;
 }
+
 .comparaSeccion .mandala-terapia:hover {
   transform: scale(1.5) translate(-50%);
 }
@@ -110,25 +122,33 @@ section div h1 {
 footer .footer-left li {
   list-style: none;
 }
+
 footer .footer-left li a {
   color: black;
   text-decoration: none;
   transition: all 0.25s;
 }
+
 footer .footer-left li a:hover {
   transform: scale(1.5);
 }
+
 footer .footer-center a img {
   transition: all 0.25s;
 }
+
 footer .footer-center a img:hover {
   transform: scale(1.1);
 }
 
 
 .margen {
-  border-left-width:  50% !important;
- 
+  border-left-width: 50% !important;
+
   border-left: black;
-  border-left-style:inset;
+  border-left-style: inset;
+}
+
+.toastNotify {
+  border-radius: 0.25rem !important;
 }
