@@ -30,8 +30,13 @@ let listaCarrefour = []
 if (datosCarrefour) {
     listaCarrefour = [...datosCarrefour]
 }
-// Array donde se filtra con los objetos con menor precio cuando encuentran una coincidencia de nombre
+// Array donde se filtra con los objetos con mayor precio cuando encuentran una coincidencia de nombre
 let filtrado = [];
+// Arrays para guardar guardar los productos con precio mas alto por supermercado
+let higherCarrefour = [];
+let higherCoto = [];
+let saverCarrefour = [];
+let saverCoto = [];
 
 
 //Variables  para poder modificar dom
@@ -45,6 +50,13 @@ let botonEliminarCoto = document.getElementById('botonEliminarCoto')
 let botonEliminarCarrefour = document.getElementById('botonEliminarCarrefour')
 let supermercado = document.getElementById('supermercado')
 let comunidad = document.getElementById('comunidad')
+let weatherCard = document.getElementById('weatherCard')
+let divAhorroCoto = document.getElementById("divAhorroCoto")
+let divAhorroCarrefour = document.getElementById("divAhorroCarrefour")
+
+
+
+
 
 
 
@@ -149,23 +161,7 @@ botonProductos.addEventListener('click', () => {
 // Se procede a las mismos eventos y funciones del array de coto
 botonProductos.addEventListener('click', () => {
 
-    // Se aplica un bucle para poder comparar los 2 arrays y tener como resultado otro array con los precios mas bajos
-    for (var i = 0; i < listaCoto.length; i++) {
 
-        for (var j = 0; j < listaCarrefour.length; j++) {
-            if (listaCoto[i]['nombre'] == listaCarrefour[j]['nombre']) {
-
-
-                // Operador Ternario if else 
-                listaCoto[i]["precio"] > listaCarrefour[j]["precio"] ? filtrado.push(listaCarrefour[j]) : filtrado.push(listaCoto[i]);
-
-            }
-        }
-
-    }
-
-
-    console.log(filtrado)
 
 
     // Se agregan bucles con condiciones en el cual crea una carda con cada objeto del Array 
@@ -227,3 +223,173 @@ botonEliminarCarrefour.addEventListener('click', () => {
     listaCarrefour.splice(0, listaCarrefour.length)
     localStorage.removeItem('productosCarrefour')
 })
+
+// Array que copian a las listas originales para despues ser modificados
+
+
+// boton que muestra las 2 listas con los productos mas economicos de cada market.
+botonAhorro.addEventListener('click', () => {
+   
+    // Se boora este array cada vez que se actualiza el boton para no duplicar datos
+    filtrado.splice(0, filtrado.length)
+
+
+
+    // Se aplica un bucle para poder comparar los 2 arrays y tener como resultado otro array con los precios mas altos
+    for (var i = 0; i < listaCoto.length; i++) {
+
+        for (var j = 0; j < listaCarrefour.length; j++) {
+            if (listaCoto[i]['nombre'] == listaCarrefour[j]['nombre']) {
+
+
+                // Operador Ternario if else 
+                listaCoto[i]["precio"] < listaCarrefour[j]["precio"] ? filtrado.push(listaCarrefour[j]) : filtrado.push(listaCoto[i]);
+
+            }
+
+
+        }
+
+    }
+
+    // Se filtran los precios mas altos por supermercados.
+    higherCoto = filtrado.filter((producto) => {
+        if (producto.supermercado == "Coto") {
+            return producto
+        }
+    });
+
+    higherCarrefour = filtrado.filter((producto) => {
+        if (producto.supermercado == "Carrefour") {
+            return producto
+        }
+    });
+
+ const resultCarrefour = listaCarrefour.filter(({ nombre: id1 }) => !higherCarrefour.some(({ nombre: id2 }) => id2 === id1));
+ saverCarrefour = resultCarrefour
+
+ const resultCoto = listaCoto.filter(({ nombre: id1 }) => !higherCoto.some(({ nombre: id2 }) => id2 === id1));
+ saverCoto= resultCoto
+
+
+    // Se crea condiciones de que si el array no tiene una cantidad leght 0 se procede a crear el codigo html de las cards
+    if (saverCoto.length !== 0) {
+        divAhorroCoto.innerHTML = ""
+        totalSaverCoto.innerHTML = ``
+
+
+
+        saverCoto.forEach((productos, index) => {
+            divAhorroCoto.innerHTML += `
+            <div class="card mx-auto my-5 text-dark bg-warning" id="producto${index}" style="width: 18rem;"> 
+                <div class="card-body px-2">
+                    <h5 class="card-title"> ${productos.nombre}</h5>
+                    <p class="card-text">Categoria: ${productos.categoria}</p>
+                    <p class="card-text">Precio: $${productos.precio}</p>
+                </div>
+             </div>
+            
+            `
+        })
+        // se crea una funcion para buscar el atributo precio en el array y sumar para calcular el total de la compra
+        const SUMASAVERCOTO = saverCoto.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
+
+        totalSaverCoto.innerHTML += `
+    <p class="text-md-center fw-bold" > El total de tu lista Coto es $ ${SUMASAVERCOTO}</p>`
+
+
+    } else {
+        divAhorroCoto.innerHTML = "No se agrego ningun producto de Coto"
+    }
+
+
+
+
+    // Se procede a las mismos eventos y funciones del array de coto
+
+
+
+
+
+    // Se agregan bucles con condiciones en el cual crea una carda con cada objeto del Array 
+
+    if (saverCarrefour.length !== 0) {
+        divAhorroCarrefour.innerHTML = ""
+        totalSaverCarrefour.innerHTML = ``
+
+
+
+
+        saverCarrefour.forEach((productos, index) => {
+            divAhorroCarrefour.innerHTML += `
+            <div class="card mx-auto my-5 text-dark bg-warning" id="producto${index}" style="width: 18rem;"> 
+                <div class="card-body px-1">
+                    <h5 class="card-title"> ${productos.nombre}</h5>
+                    <p class="card-text">Categoria: ${productos.categoria}</p>
+                    <p class="card-text">Precio: $${productos.precio}</p>
+                </div>
+             </div>
+            
+            `
+        })
+        const SUMASAVERCARREFOUR = saverCarrefour.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
+
+        totalSaverCarrefour.innerHTML += `
+    <p class="text-md-center fw-bold" > El total de tu lista Carrefour es $ ${SUMASAVERCARREFOUR}</p>`
+
+
+
+
+
+    } else {
+        divAhorroCarrefour.innerHTML = "No se agrego ningun producto de Carrefour"
+    }
+
+
+
+
+});
+
+
+
+
+
+
+//Api del clima para el desafio
+
+
+let myKey = "dad50ee0a666f8874b4e75882a8ff873"
+
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Ciudad Autónoma de Buenos Aires&appid=${myKey}&units=metric&lang=es`)
+
+    .then((res) => res.json())
+    .then(data => {
+
+        let cityName = data['name'];
+        let tempValue = data['main']['temp'];
+        let tempMax = data['main']['temp_max'];
+        let tempMin = data['main']['temp_min'];
+        let humedad = data['main']['humidity'];
+        let descriptionValue = data['weather'][0]['description'];
+
+
+
+
+        weatherCard.innerHTML += ` 
+<div class=" card bg-warning  mx-auto" style="width: 18rem;">
+    <div class="card-body ">
+    <h5 class="card-title ">${cityName}</h5>
+    <p class="card-text">${descriptionValue}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class=" bg-warning  list-group-item display-3"> ${tempValue}°</li>
+    <li class=" bg-warning list-group-item"> Max= ${tempMax}°</li>
+    <li class=" bg-warning list-group-item"> Min = ${tempMin}°</li>
+    <li class="  bg-warning list-group-item"> 💧 =  ${humedad}%</li>
+  </ul>
+
+</div>
+
+`
+    })
