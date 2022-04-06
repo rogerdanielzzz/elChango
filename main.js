@@ -53,7 +53,9 @@ let comunidad = document.getElementById('comunidad')
 let weatherCard = document.getElementById('weatherCard')
 let divAhorroCoto = document.getElementById("divAhorroCoto")
 let divAhorroCarrefour = document.getElementById("divAhorroCarrefour")
-
+let totalSavercoto= document.getElementById ("totalSavercoto");
+let totalSaverCarrefour = document.getElementById ("totalSaverCarrefour");
+let totalAhorro = document.getElementById('totalAhorro')
 
 
 
@@ -167,7 +169,7 @@ botonProductos.addEventListener('click', () => {
     // Se agregan bucles con condiciones en el cual crea una carda con cada objeto del Array 
 
     if (listaCarrefour.length !== 0) {
-        divListaCarrefour.innerHTML = ""
+        divListaCarrefour.innerHTML = ``
         totalCarrefour.innerHTML = ``
         botonEliminarCarrefour.innerHTML = ``
 
@@ -232,8 +234,8 @@ botonAhorro.addEventListener('click', () => {
    
     // Se boora este array cada vez que se actualiza el boton para no duplicar datos
     filtrado.splice(0, filtrado.length)
-
-
+    totalAhorro.innerHTML +=   ``
+ 
 
     // Se aplica un bucle para poder comparar los 2 arrays y tener como resultado otro array con los precios mas altos
     for (var i = 0; i < listaCoto.length; i++) {
@@ -270,11 +272,13 @@ botonAhorro.addEventListener('click', () => {
 
  const resultCoto = listaCoto.filter(({ nombre: id1 }) => !higherCoto.some(({ nombre: id2 }) => id2 === id1));
  saverCoto= resultCoto
+ const SUMASAVERCOTO = saverCoto.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
+ const SUMASAVERCARREFOUR = saverCarrefour.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
 
 
     // Se crea condiciones de que si el array no tiene una cantidad leght 0 se procede a crear el codigo html de las cards
     if (saverCoto.length !== 0) {
-        divAhorroCoto.innerHTML = ""
+        divAhorroCoto.innerHTML = ``
         totalSaverCoto.innerHTML = ``
 
 
@@ -292,7 +296,6 @@ botonAhorro.addEventListener('click', () => {
             `
         })
         // se crea una funcion para buscar el atributo precio en el array y sumar para calcular el total de la compra
-        const SUMASAVERCOTO = saverCoto.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
 
         totalSaverCoto.innerHTML += `
     <p class="text-md-center fw-bold" > El total de tu lista Coto es $ ${SUMASAVERCOTO}</p>`
@@ -314,7 +317,7 @@ botonAhorro.addEventListener('click', () => {
     // Se agregan bucles con condiciones en el cual crea una carda con cada objeto del Array 
 
     if (saverCarrefour.length !== 0) {
-        divAhorroCarrefour.innerHTML = ""
+        divAhorroCarrefour.innerHTML = ``
         totalSaverCarrefour.innerHTML = ``
 
 
@@ -332,7 +335,6 @@ botonAhorro.addEventListener('click', () => {
             
             `
         })
-        const SUMASAVERCARREFOUR = saverCarrefour.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
 
         totalSaverCarrefour.innerHTML += `
     <p class="text-md-center fw-bold" > El total de tu lista Carrefour es $ ${SUMASAVERCARREFOUR}</p>`
@@ -346,7 +348,8 @@ botonAhorro.addEventListener('click', () => {
     }
 
 
-
+    totalAhorro.innerHTML +=   `<p class="text-md-center fw-bold display-3" > El total de tus compras ahorradoras es de $ ${SUMASAVERCARREFOUR+SUMASAVERCOTO} </p>
+    `
 
 });
 

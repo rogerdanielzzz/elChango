@@ -155,8 +155,19 @@ footer .footer-center a img:hover {
 
   border-left: black;
   border-left-style: inset;
+
+ 
 }
 
 .toastNotify {
   border-radius: 0.25rem !important;
+}
+
+@media only screen and ( max-width: 991px) {
+  .margen {   
+    border-bottom-width: 50% !important;
+    border-bottom: black;
+    border-bottom-style: inset;
+    border-left: none;
+  }
 }
