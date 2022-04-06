@@ -84,6 +84,7 @@ section div h1 {
   background-color: #32cd32;
   box-shadow: 0px 4px 14px black;
 }
+
 .climaSeccion {
   margin-top: 5vh;
   padding: 60px 0px 60px 0px;
@@ -156,15 +157,15 @@ footer .footer-center a img:hover {
   border-left: black;
   border-left-style: inset;
 
- 
+
 }
 
 .toastNotify {
   border-radius: 0.25rem !important;
 }
 
-@media only screen and ( max-width: 991px) {
-  .margen {   
+@media only screen and (max-width: 991px) {
+  .margen {
     border-bottom-width: 50% !important;
     border-bottom: black;
     border-bottom-style: inset;
