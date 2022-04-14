@@ -149,7 +149,7 @@ botonProductos.addEventListener('click', () => {
         const SUMACOTO = listaCoto.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
 
         totalCoto.innerHTML += `
-        <p class="text-md-center fw-bold" > El total de tu lista Coto es $ ${SUMACOTO}</p>`
+        <p class="text-center fw-bold" > El total de tu lista Coto es $ ${SUMACOTO}</p>`
         botonEliminarCoto.innerHTML += `
         <button id="botonProductos" class="btn btn-danger text-center">Eliminar Lista</button>`
 
@@ -190,7 +190,7 @@ botonProductos.addEventListener('click', () => {
         const SUMACARREFOUR = listaCarrefour.map(item => item.precio).reduce((prev, curr) => prev + curr, 0);
 
         totalCarrefour.innerHTML += `
-        <p class="text-md-center fw-bold" > El total de tu lista Carrefour es $ ${SUMACARREFOUR}</p>`
+        <p class="text-center fw-bold" > El total de tu lista Carrefour es $ ${SUMACARREFOUR}</p>`
 
         botonEliminarCarrefour.innerHTML += `
         <button id="botonProductos" class="btn btn-danger text-center">Eliminar Lista</button>`
@@ -234,7 +234,7 @@ botonAhorro.addEventListener('click', () => {
 
     // Se boora este array cada vez que se actualiza el boton para no duplicar datos
     filtrado.splice(0, filtrado.length)
-    totalAhorro.innerHTML += ``
+    
 
 
     // Se aplica un bucle para poder comparar los 2 arrays y tener como resultado otro array con los precios mas altos
@@ -287,7 +287,7 @@ botonAhorro.addEventListener('click', () => {
     // Se crea condiciones de que si el array no tiene una cantidad leght 0 se procede a crear el codigo html de las cards
     if (saverCoto.length !== 0) {
         divAhorroCoto.innerHTML = ``
-        totalSaverCoto.innerHTML = ``
+        totalAhorro.innerHTML = ``
 
 
 
@@ -306,7 +306,7 @@ botonAhorro.addEventListener('click', () => {
         // se crea una funcion para buscar el atributo precio en el array y sumar para calcular el total de la compra
 
         totalSaverCoto.innerHTML += `
-    <p class="text-md-center fw-bold" > El total de tu lista Coto es $ ${SUMASAVERCOTO}</p>`
+    <p class="text-center fw-bold" > El total de tu lista Coto es $ ${SUMASAVERCOTO}</p>`
 
 
     } else {
@@ -345,7 +345,7 @@ botonAhorro.addEventListener('click', () => {
         })
 
         totalSaverCarrefour.innerHTML += `
-    <p class="text-md-center fw-bold" > El total de tu lista Carrefour es $ ${SUMASAVERCARREFOUR}</p>`
+    <p class="text-center fw-bold" > El total de tu lista Carrefour es $ ${SUMASAVERCARREFOUR}</p>`
 
 
 
@@ -355,8 +355,8 @@ botonAhorro.addEventListener('click', () => {
         divAhorroCarrefour.innerHTML = "No se agrego ningun producto de Carrefour"
     }
 
-
-    totalAhorro.innerHTML += `<p class="text-md-center fw-bold display-3" > El total de tus compras ahorradoras es de $ ${SUMASAVERCARREFOUR+SUMASAVERCOTO} </p>
+    
+    totalAhorro.innerHTML = `<p class="text-center fw-bold display-3" > El total de tus compras ahorradoras es de $ ${SUMASAVERCARREFOUR+SUMASAVERCOTO} </p>
     `
 
 });
