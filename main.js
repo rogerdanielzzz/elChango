@@ -305,7 +305,7 @@ botonAhorro.addEventListener('click', () => {
         })
         // se crea una funcion para buscar el atributo precio en el array y sumar para calcular el total de la compra
 
-        totalSaverCoto.innerHTML += `
+        totalSaverCoto.innerHTML = `
     <p class="text-center fw-bold" > El total de tu lista Coto es $ ${SUMASAVERCOTO}</p>`
 
 
